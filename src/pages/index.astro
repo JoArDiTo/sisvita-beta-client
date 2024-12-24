@@ -1,0 +1,23 @@
+---
+import Layout from '@layouts/Layout.astro'
+import { getAllTests } from '@api/connection'
+import TestCard from '@components/TestCard.astro'
+
+const tests = await getAllTests();
+---
+
+<Layout>
+	<section class="flex flex-col px-6 py-8 justify-center items-center gap-y-4">
+		<h1 class="text-4xl font-bold">Tests</h1>
+		{
+			tests.map((test: {id: string, name:string, description:string, slug: string, author: string}) => (
+				<TestCard {...test} />
+			))
+		}
+		{
+			tests.length === 1 && (
+				<p class="text-lg text-center">Servidor en mantenimiento</p>
+			)
+		}
+	</section>
+</Layout>

@@ -1,0 +1,19 @@
+---
+interface Props {
+  id: string
+  name:string
+  description:string
+  slug: string
+  author: string
+}
+
+const {id, name, description, slug, author} = Astro.props;
+---
+
+<a
+  class="bg-gray-100 border-2 border-gray-300 text-black p-4 rounded-lg w-full transition hover:scale-110"
+  data-key={id} href={`/test/${slug}`}>
+  <h1 transition:name=`${slug}-label` class="text-xl lg:text-2xl font-semibold">{name}</h1>
+  <p transition:name=`${slug}-author` class="text-md lg:text-lg">Por <strong>{author}</strong></p>
+  <p transition:name=`${slug}-description` class="text-sm lg:text-lg">{description}</p>
+</a>

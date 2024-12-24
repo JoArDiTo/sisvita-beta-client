@@ -1,0 +1,124 @@
+{
+	"test": [
+    {
+      "author": "William W. K. Zung",
+      "description": "Mide el nivel de ansiedad de un individuo a través de autoevaluación.",
+      "id": "b1194a18-e01f-4404-baae-3ac9d19b867b",
+      "name": "Escala de Ansiedad de Zung (SAS)",
+      "slug": "test-ansiedad-zung"
+    }
+  ],
+  "detail_test": {
+    "alternatives": [
+      {
+        "content": "Raramente",
+        "id": "d78beba7-864b-4d9c-b298-8f1c3b0685ef",
+        "value": 1
+      },
+      {
+        "content": "Algunas veces",
+        "id": "26ce5908-b8c1-4b3a-a6f8-84e4ea8908e9",
+        "value": 2
+      },
+      {
+        "content": "Buena parte del tiempo",
+        "id": "96d09a90-73c7-4e6a-b385-4f9eadceb75f",
+        "value": 3
+      },
+      {
+        "content": "La mayor parte del tiempo",
+        "id": "5309bdc1-2eb0-4427-b1a3-401addf020d4",
+        "value": 4
+      }
+    ],
+    "detail": {
+      "author": "William W. K. Zung",
+      "description": "Mide el nivel de ansiedad de un individuo a través de autoevaluación.",
+      "id": "b1194a18-e01f-4404-baae-3ac9d19b867b",
+      "name": "Escala de Ansiedad de Zung (SAS)",
+      "slug": "test-ansiedad-zung"
+    },
+    "questions": [
+      {
+        "content": "Me siento más intranquilo y nervioso que de costumbre",
+        "id": "940de160-80c3-4fa0-81e6-ea68d0066dce"
+      },
+      {
+        "content": "Me siento atemorizado sin motivo",
+        "id": "c5f850e7-d125-4f38-9600-952d65b1d021"
+      },
+      {
+        "content": "Me altero o angustio fácilmente",
+        "id": "c206b8f7-9005-4775-9495-5fac569988e9"
+      },
+      {
+        "content": "Siento como si me estuviera deshaciendo a pedazos",
+        "id": "e3d60914-25cc-4717-a515-1ea8ccbec690"
+      },
+      {
+        "content": "Creo que todo está bien y que no va a pasar nada malo",
+        "id": "ac71e158-b1a8-4f11-a1af-a5e31c5373a3"
+      },
+      {
+        "content": "Me tiemblan los brazos y las piernas",
+        "id": "31093fa3-1f82-4a15-bc85-3cae1644c7a2"
+      },
+      {
+        "content": "Sufro dolores de cabeza, del cuello y de la espalda",
+        "id": "9edb5d4f-0b53-4ebf-a02b-ef2a1067e1bc"
+      },
+      {
+        "content": "Me siento débil y me canso fácilmente",
+        "id": "ea3d3c26-b87c-45a1-8ebf-6bdb5d294a88"
+      },
+      {
+        "content": "Me siento tranquilo y me es fácil estarme quieto",
+        "id": "497700c4-5349-4f3e-acb3-21c12b4d4c70"
+      },
+      {
+        "content": "Siento que el corazón me late aprisa",
+        "id": "8c8b3372-5892-4ae8-940e-86135d9154f2"
+      },
+      {
+        "content": "Sufro mareos",
+        "id": "724711c6-ecf4-4647-9c15-874b3df9c56e"
+      },
+      {
+        "content": "Me desmayo o siento que voy a desmayarme",
+        "id": "41e224d7-8af4-4809-bcc2-f29fea6c457d"
+      },
+      {
+        "content": "Puedo respirar fácilmente",
+        "id": "dd9dda3f-0e52-4aa1-a9e9-c04cc3b0de50"
+      },
+      {
+        "content": "Se me duermen los pies y me hormiguean los dedos de las manos y de los pies",
+        "id": "2d93a658-b28d-428e-9247-eb9f50b3015b"
+      },
+      {
+        "content": "Sufro de dolores de estómago, indigestión",
+        "id": "32c9e149-981b-4cdd-9756-b7c5b2a2e33d"
+      },
+      {
+        "content": "Tengo que orinar con mucha frecuencia",
+        "id": "6817b314-ef3d-4197-8db7-6821bac56032"
+      },
+      {
+        "content": "Generalmente tengo las manos secas y calientes",
+        "id": "ae5f7004-1d61-4b5b-9dea-4e3888d993c6"
+      },
+      {
+        "content": "La cara se me pone caliente y roja",
+        "id": "46d79f1a-5d3f-4dab-8b50-29aaeb8154fb"
+      },
+      {
+        "content": "Me duermo fácilmente y descanso bien por la noche",
+        "id": "a09aeb0d-a99a-4340-ae39-5afdc69cb33c"
+      },
+      {
+        "content": "Tengo pesadillas",
+        "id": "4874ced3-8367-44b0-8d54-76fccf9440a8"
+      }
+    ]
+  }
+}

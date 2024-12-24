@@ -1,0 +1,117 @@
+---
+import { SERVER_URL } from 'astro:env/server'
+
+interface Props {
+  id: string;
+  questions: {
+    id: string;
+    content: string;
+  }[],
+  alternatives: {
+    id: string;
+    content: string;
+    value: number;
+  }[],
+}
+
+const {id, questions, alternatives} = Astro.props;
+const score_url = `${SERVER_URL}/api/template_test/${id}/calculate`;
+---
+
+<>
+  <form id="test-form" class="flex flex-col gap-y-4" data-score-url={score_url} data-n-question={questions.length}>
+    {
+      questions.map((question: { id: string, content: string }) => (
+        <div class="bg-gray-100 border-2 border-gray-300 text-black p-4 rounded-lg w-full">
+          <h1 class="text-xl lg:text-2xl font-semibold py-2">{question.content}</h1>
+          <div class="flex flex-col gap-y-4">
+            {
+              alternatives.map((alternative: { id: string, content: string, value: number }) => (
+                <div
+                  id={`id-${alternative.id}`}
+                  class="bg-gray-200 border-2 border-gray-300 text-black p-4 rounded-lg w-full cursor-pointer"
+                  data-question-id={question.id}
+                  data-value={alternative.value}
+                >
+                  {alternative.content}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      ))
+    }
+    <button id="send-button" type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">ENVIAR</button>
+  </form>
+  <div id="result" class="bg-white shadow-lg rounded-lg overflow-hidden w-full h-40 grid place-items-center p-3 text-center">
+    Cargando resultados...
+  </div>
+</>
+
+<style>
+  .selected {
+    background-color: #2563EB;
+    color: white;
+    border-color: #2563EB;
+    transition: all 0.2s;
+    cursor: auto;
+  }
+</style>
+
+<script type="module" is:inline>
+  const resultContent = document.getElementById('result')
+  resultContent.style.display = 'none'
+
+  const form = document.getElementById('test-form')
+  const scoreUrl = form.getAttribute('data-score-url') 
+  const nQuestions = parseInt(form.getAttribute('data-n-question'))
+  
+  let selectedValues = {}
+
+  const alternatives = document.querySelectorAll('[id^="id-"]')
+
+  alternatives.forEach((alternative) => {
+     alternative.addEventListener('click', () => handleOptionClick(alternative))
+  })
+
+  function handleOptionClick(element){
+    const questionId = element.getAttribute('data-question-id')
+    const value = element.getAttribute('data-value')
+
+    const options = document.querySelectorAll(`[data-question-id="${questionId}"]`)
+    options.forEach(opt => opt.classList.remove('selected'))
+    element.classList.add('selected')
+    selectedValues[questionId] = value
+    console.log(Object.keys(selectedValues).length)
+  }
+
+  let sumScore = 0
+  let message = ''
+  const sendButton = document.getElementById('send-button')
+  sendButton.addEventListener('click', () => calculateScore())
+
+  async function calculateScore(){
+    if (Object.keys(selectedValues).length !== nQuestions)
+      return alert('Por favor, responda todas las perguntas');
+
+    form.style.display = 'none'
+    resultContent.style.display = 'grid'
+
+    for (const value of Object.values(selectedValues)) {
+      sumScore += parseInt(value);
+    }
+
+    const response = await fetch(`${scoreUrl}/${sumScore}`, {
+      method: 'POST',
+    });
+    if (response.ok) message = await response.text();
+    else return alert(sum)
+    
+    resultContent.textContent = ''
+    resultContent.innerHTML = `
+      <h1 class="text-2xl sm:text-3xl text-center font-bold mb-2">Resultados</h1>
+      <span class="text-lg sm:text-2xl font-semibold text-center block">${message}</span>
+      <p class="text-base sm:text-lg text-center py-2">Tu puntaje es: ${sumScore}pts</p>
+    `
+  }
+</script>
