@@ -20,4 +20,45 @@ const tests = await getAllTests();
 			)
 		}
 	</section>
+
+	<section class="flex flex-col px-6 py-8 justify-center items-center gap-y-4 w-full">
+		<article class='article-container'>
+			<span class="text-sm lg:text-lg cursor-pointer block p-3 text-white bg-slate-800 outline-1 outline-black rounded-lg hover:bg-slate-700 transition-colors duration-300">¿En que ayuda SISVITA?</span>
+			<div class="my-1 p-2.5 bg-[#f8f8f8] outline-1 outline-[#ccc] rounded-md transition-all duration-500 text-justify">SISVITA es una plataforma web que permite a las personas realizar test de ansiedad y validar los resultados obtenidos para un mejor entendimiento de su estado emocional.</div>
+		</article>
+		<article class='article-container'>
+			<span class="text-sm lg:text-lg cursor-pointer block p-3 text-white bg-slate-800 outline-1 outline-black rounded-lg hover:bg-slate-700 transition-colors duration-300">¿Cúal fue el motivo para desarrollar SISVITA?</span>
+			<div class="my-1 p-2.5 bg-[#f8f8f8] outline-1 outline-[#ccc] rounded-md transition-all duration-500 text-justify">SISVITA fue desarrollado con el objetivo de proporcionar una herramienta accesible y confiable para que las personas puedan evaluar su nivel de ansiedad y obtener resultados precisos que les ayuden a tomar decisiones informadas sobre su salud mental.</div>
+		</article>
+		<article class='article-container'>
+			<span class="text-sm lg:text-lg cursor-pointer block p-3 text-white bg-slate-800 outline-1 outline-black rounded-lg hover:bg-slate-700 transition-colors duration-300">¿Qué se espera de la aplicación web?</span>
+			<div class="my-1 p-2.5 bg-[#f8f8f8] outline-1 outline-[#ccc] rounded-md transition-all duration-500 text-justify">Se espera que las futuras mejoras de SISVITA incluyan nuevas funcionalidades, una interfaz de usuario más intuitiva y la integración de más tests y recursos para ofrecer un soporte más completo a los usuarios.</div>
+		</article>
+	</section>
+
+	<style>
+		.article-container {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 10px;
+			width: 100%;
+			max-width: 42rem;
+			height: 55px;
+			background: white;
+			overflow: hidden;
+			transition: height 0.5s;
+			interpolate-size: allow-keywords;
+		}
+	</style>		
+
+	<script is:inline type="module">
+		const articles = document.querySelectorAll('.article-container');
+		articles.forEach(article => {
+			const span = article.querySelector('span');
+			span.addEventListener('click', () => {
+				if (article.style.height === 'auto') return article.style.height = '55px';
+				else return article.style.height = 'auto';
+			});
+		});
+	</script>
 </Layout>
