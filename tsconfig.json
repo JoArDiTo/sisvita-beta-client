@@ -9,6 +9,7 @@
       "@components/*": ["src/components/*"],
       "@api/*": ["src/api/*"],
       "@mocks/*": ["src/mocks/*"],
+      "@sections/*": ["src/sections/*"],
     }
   }
 }

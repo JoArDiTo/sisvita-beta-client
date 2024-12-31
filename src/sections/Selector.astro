@@ -1,0 +1,18 @@
+---
+import { getAllTests } from '@api/connection'
+import TestCard from '@components/TestCard.astro'
+
+const tests = await getAllTests();
+---
+
+<section id="test" class="max-w-6xl mx-6 lg:mx-12 my-6 p-4 lg:p-8 rounded-lg text-justify text-sm lg:text-xl flex flex-col gap-y-5">   
+  {
+    tests.length > 1 ? (
+      tests.map((test: {id: string, name:string, description:string, slug: string, author: string}) => (
+        <TestCard {...test} />
+      ))
+    ) : (
+    <p class="text-lg text-center">Servidor en mantenimiento</p>
+    )
+  }
+</section>
