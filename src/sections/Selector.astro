@@ -2,13 +2,13 @@
 import TestList from '@components/TestList.astro'
 ---
 
-<section id="test" class="max-w-6xl mx-6 lg:mx-12 my-6 p-4 lg:p-8 rounded-lg text-justify text-sm lg:text-xl flex flex-col gap-y-5">   
+<section id="test" class="max-w-6xl mx-6 lg:mx-12 my-6 p-4 lg:p-8 rounded-lg text-justify text-sm lg:text-xl flex flex-col gap-y-5 min-h-lvh">   
   <div class="flex flex-col items-center">
     <h2 class="text-2xl lg:text-3xl font-semibold text-center">Evaluaciones</h2>
     <p class="text-lg lg:text-xl text-center mt-4">Selecciona una evaluación para comenzar</p>
   </div>
   <TestList server:defer>
-    <div slot="fallback" class="flex justify-center items-center h-[720px]">
+    <div slot="fallback" class="flex justify-center items-center">
       <span class="text-center">Cargando evaluaciones...</span>
     </div>
   </TestList>

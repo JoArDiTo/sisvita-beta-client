@@ -26,3 +26,6 @@ Una plataforma web que permitirá calcular el nivel de ansiedad de una persona p
   ```bash
   npm run dev
   ```
+
+## Nota
+Es importante que para la funcionalidad local, se tenga ejecutando el proyecto sisvita-beta-server, del repositorio: https://github.com/JoArDiTo/sisvita-beta-server
