@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig, envField } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,5 +15,5 @@ export default defineConfig({
       SERVER_URL: envField.string({context: 'server', access: 'public', default: 'http://localhost:5000'}), //Local server
     }
   },
-  adapter: vercel()
+  adapter: vercel({})
 });
