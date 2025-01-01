@@ -10,11 +10,7 @@ import Footer from '@sections/Footer.astro'
 <Layout>
 	<Welcome />
 	<Description />
-	<Selector server:defer>
-    <div slot="fallback" class="flex justify-center items-center h-96">
-      <span class="w-full h-full text-center">Cargando evaluaciones...</span>
-    </div>
-  </Selector>
+	<Selector />
 	<Accordion />
 	<Footer />
 </Layout>

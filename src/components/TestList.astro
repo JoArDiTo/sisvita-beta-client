@@ -1,0 +1,17 @@
+---
+import { getAllTests } from '@api/connection'
+import TestCard from '@components/TestCard.astro'
+
+const tests = await getAllTests();
+---
+<>
+{
+  tests.length > 1 ? (
+    tests.map((test: {id: string, name:string, description:string, slug: string, author: string}) => (
+      <TestCard {...test} />
+    ))
+  ) : (
+    <p class="text-lg text-center">Servidor en mantenimiento</p>
+  )
+}
+</>
