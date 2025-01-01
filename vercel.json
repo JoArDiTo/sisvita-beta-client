@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/_server-islands/:path*",
+      "destination": "/_server-islands/:path*"
+    }
+  ]
+}
