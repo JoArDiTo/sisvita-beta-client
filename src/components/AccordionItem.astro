@@ -1,0 +1,36 @@
+---
+import QuestionIcon from "@icons/QuestionIcon.astro";
+import ExtendIcon from "@icons/ExtendIcon.astro";
+
+interface Props {
+  index: number;
+  title: string;
+  content: string;
+}
+
+const { index, title, content } = Astro.props;
+---
+
+<h2 id={`accordion-open-heading-${index + 1}`}>
+  <button
+    type="button"
+    class={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3 ${index === 0 ? "rounded-t-xl" : ""} ${index === 2 ? "border-b" : "border-b-0"}`}
+    data-accordion-target={`#accordion-open-body-${index + 1}`}
+    aria-expanded="false"
+    aria-controls={`accordion-open-body-${index + 1}`}
+  >
+    <span class="flex items-center">
+      <QuestionIcon /> { title }
+    </span>
+    <ExtendIcon />
+  </button>
+</h2>
+<div
+  id={`accordion-open-body-${index + 1}`}
+  class="hidden"
+  aria-labelledby={`accordion-open-heading-${index + 1}`}
+>
+  <div class={`p-5 border border-gray-200 ${index === 2 ? "border-b" : "border-b-0"}`}>
+    <p class="mb-2 text-gray-500">{ content }</p>
+  </div>
+</div>

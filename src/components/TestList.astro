@@ -1,19 +1,32 @@
 ---
-import { getAllTests } from '@api/connection'
-import TestCard from '@components/TestCard.astro'
+import { getAllTests } from "@api/connection";
+import TestCard from "@components/TestCard.astro";
 
 const tests = await getAllTests();
 ---
+
 <>
   {
-    tests.map((test: {id: string, name:string, description:string, slug: string, author: string}) => (
-      <TestCard {...test} />
-    ))
+    tests.map(
+      (test: {
+        id: string;
+        name: string;
+        description: string;
+        slug: string;
+        author: string;
+      }) => <TestCard {...test} />,
+    )
   }
   {
     tests.length === 1 && (
-      <div class="flex justify-center items-center">
+      <div class="flex flex-col justify-center items-center gap-y-4">
         <span class="text-center">Servidor no disponible</span>
+        <button
+           onclick="location.reload()"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+        >
+          Volver a cargar
+        </button>
       </div>
     )
   }
