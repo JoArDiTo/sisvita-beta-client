@@ -1,7 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import { getAllTests, getTestBy } from '@api/connection'
-import Form from '@components/Form.astro';
+import { getAllTests, getTestBy } from '@api/connection.ts'
+import FormReact from '@components/Form.tsx'
+import { SERVER_URL } from 'astro:env/server'
 
 export const prerender = true
 
@@ -18,20 +19,19 @@ export async function getStaticPaths(){
 const { test_id } = Astro.props;
 const test = await getTestBy(test_id);
 const { alternatives, detail, questions } = test;
-console.log(`${detail.id}-label`)
-
+const { name, author, description } = detail;
 ---
 
 <Layout>
-  <section class="flex flex-col px-6 py-8 justify-center items-center gap-y-4 max-w-3xl">
+  <section class="flex flex-col px-2 py-8 justify-center items-center gap-y-4 w-full max-w-4xl">
     <div class="flex flex-col items-center sticky top-0 w-full z-10 p-3 rounded-xl backdrop-blur-sm">
-      <h1 transition:name=`${detail.slug}-label` class="text-2xl lg:text-3xl font-semibold text-center">{detail.name}</h1>
-      <p transition:name=`${detail.slug}-author` class="text-lg lg:text-xl text-center"><strong>{detail.author}</strong></p>
-      <p transition:name=`${detail.slug}-description` class="text-md lg:text-lg text-center pt-2 pb-4">{detail.description}</p>
-      <a class="py-2 px-4 bg-red-500 text-white transition hover:bg-red-700 border-2 rounded-xl text-sm lg:text-lg" href="/#test">
-        REGRESAR
+      <h1 transition:name=`${detail.slug}-label` class="text-lg lg:text-3xl font-semibold text-center">{ name }</h1>
+      <p transition:name=`${detail.slug}-author` class="text-md lg:text-xl text-center"><strong>{ author }</strong></p>
+      <p transition:name=`${detail.slug}-description` class="text-xs lg:text-lg text-center pt-2 pb-4">{ description }</p>
+      <a class="py-2 px-4 bg-red-500 text-white transition hover:bg-red-700 rounded-lg text-sm lg:text-lg" href="/#test">
+        Regresar
       </a>
     </div>
-    <Form id={test_id} questions={questions} alternatives={alternatives} />
+    <FormReact client:load test_id={test_id} questions={questions} alternatives={alternatives} url={SERVER_URL}  />
   </section>
 </Layout>

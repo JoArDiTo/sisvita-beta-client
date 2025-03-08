@@ -19,4 +19,4 @@ export async function getTestBy(id: string){
   } catch {
     return detail_test
   }
-} 
+}
